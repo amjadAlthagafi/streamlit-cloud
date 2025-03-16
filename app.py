@@ -7,9 +7,6 @@ from nltk.tokenize import word_tokenize
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import gensim.downloader as api
 
-# Load the local Word2Vec model
-w2v_model = KeyedVectors.load_word2vec_format("./GoogleNews-vectors-negative300.bin.gz", binary=True)
-
 # Load pre-trained Word2Vec model
 w2v_model = api.load("word2vec-google-news-300")
 
