@@ -1,3 +1,5 @@
+pip install streamlit tensorflow numpy nltk gensim
+nltk.download('punkt')
 import streamlit as st
 import tensorflow as tf
 import numpy as np
@@ -17,7 +19,7 @@ def text_to_sequence(text, model):
     return [model[word] for word in words if word in model]
 
 # Load trained CNN model
-model = tf.keras.models.load_model("cnn_model_headline.h5")
+model = tf.keras.models.load_model("./cnn_model_headline.h5")
 
 # Streamlit app
 st.title("News Headline Classification App")
