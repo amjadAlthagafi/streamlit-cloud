@@ -1,11 +1,15 @@
+import os
 import streamlit as st
 import tensorflow as tf
 import numpy as np
 import nltk
-nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import gensim.downloader as api
+
+# Check if punkt is already downloaded, if not, download it
+if not os.path.exists(os.path.expanduser("~") + '/nltk_data/tokenizers/punkt'):
+    nltk.download('punkt')
 
 # Load pre-trained Word2Vec model
 w2v_model = api.load("word2vec-google-news-300")
@@ -36,6 +40,4 @@ if st.button("Predict"):
         prediction = model.predict(padded_sequence)[0][0]
         label = "Positive" if prediction > 0.7 else "Negative"
         
-        st.write(f"**Prediction:** {label} (Confidence: {prediction:.4f})")
-    else:
-        st.write("Please enter a headline.")
+        st.write(f"**Prediction:** {label
