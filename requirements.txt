@@ -6,3 +6,4 @@ matplotlib>=3.7.2
 tensorflow==2.19.0
 gensim
 nltk
+scipy
