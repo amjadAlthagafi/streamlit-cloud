@@ -5,6 +5,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import gensim.downloader as api
+from scipy.linalg import triu
 
 # Load pre-trained Word2Vec model
 w2v_model = api.load("word2vec-google-news-300")
