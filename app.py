@@ -6,14 +6,12 @@ import tensorflow as tf
 from nltk.tokenize import word_tokenize
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import gensim.downloader as api
-from gensim.models import KeyedVectors
 
 # Load the local Word2Vec model
 w2v_model = KeyedVectors.load_word2vec_format("./GoogleNews-vectors-negative300.bin.gz", binary=True)
 
 # Load pre-trained Word2Vec model
-# w2v_model = api.load("word2vec-google-news-300")
-# w2v_model = api.load("./GoogleNews-vectors-negative300.bin.gz")
+w2v_model = api.load("word2vec-google-news-300")
 
 embedding_dim = 300  # Word vector size
 max_length = 30  # Fixed sentence length
