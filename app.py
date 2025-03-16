@@ -9,7 +9,7 @@ import gensim.downloader as api
 
 # Load pre-trained Word2Vec model
 #w2v_model = api.load("word2vec-google-news-300")
-w2v_model = api.load("/users/amjad/downloads/GoogleNews-vectors-negative300.bin")
+w2v_model = api.load("./GoogleNews-vectors-negative300.bin")
 
 embedding_dim = 300  # Word vector size
 max_length = 30  # Fixed sentence length
