@@ -1,8 +1,5 @@
-tensorflow
-nltk
-scikit-learn
-gensim==4.3.1
-scipy==1.10.1
-numpy==1.23.5
-pandas==1.5.3
-streamlit==1.18.1
+gensim
+scipy
+numpy
+pandas
+streamlit
