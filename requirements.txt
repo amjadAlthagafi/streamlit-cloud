@@ -5,3 +5,7 @@ pandas
 streamlit
 tensorflow
 nltk
+seaborn
+matplotlib
+scikit-learn
+
