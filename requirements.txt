@@ -4,4 +4,4 @@ numpy
 pandas
 nltk
 scikit-learn
-
+gensim
