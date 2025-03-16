@@ -9,7 +9,10 @@ import gensim.downloader as api
 
 # Check if punkt is already downloaded, if not, download it
 if not os.path.exists(os.path.expanduser("~") + '/nltk_data/tokenizers/punkt'):
-    nltk.download('punkt')
+    try:
+        nltk.download('punkt')
+    except Exception as e:
+        st.write(f"Error downloading punkt: {e}")
 
 # Load pre-trained Word2Vec model
 w2v_model = api.load("word2vec-google-news-300")
@@ -21,8 +24,12 @@ def text_to_sequence(text, model):
     words = word_tokenize(text.lower())
     return [model[word] for word in words if word in model]
 
-# Load trained CNN model
-model = tf.keras.models.load_model("cnn_model_headline.h5")
+# Check if model file exists before loading
+model_path = "cnn_model_headline.h5"
+if os.path.exists(model_path):
+    model = tf.keras.models.load_model(model_path)
+else:
+    st.write("Model file not found.")
 
 # Streamlit app
 st.title("News Headline Classification App")
@@ -37,9 +44,11 @@ if st.button("Predict"):
         padded_sequence = pad_sequences([sequence], maxlen=max_length, dtype='float32', padding='post', truncating='post', value=0.0)
         
         # Predict
-        prediction = model.predict(padded_sequence)[0][0]
-        label = "Positive" if prediction > 0.7 else "Negative"
-        
-        st.write(f"**Prediction:** {label} (Confidence: {prediction:.4f})")
+        try:
+            prediction = model.predict(padded_sequence)[0][0]
+            label = "Positive" if prediction > 0.7 else "Negative"
+            st.write(f"**Prediction:** {label} (Confidence: {prediction:.4f})")
+        except Exception as e:
+            st.write(f"Error during prediction: {e}")
     else:
         st.write("Please enter a headline.")
