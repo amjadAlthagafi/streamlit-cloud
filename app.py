@@ -40,4 +40,6 @@ if st.button("Predict"):
         prediction = model.predict(padded_sequence)[0][0]
         label = "Positive" if prediction > 0.7 else "Negative"
         
-        st.write(f"**Prediction:** {label
+        st.write(f"**Prediction:** {label} (Confidence: {prediction:.4f})")
+    else:
+        st.write("Please enter a headline.")
