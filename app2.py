@@ -19,7 +19,7 @@ import gensim.downloader as api
 # تحميل الموديل
 @st.cache_resource()
 def load_model():
-    model = tf.keras.models.load_model("model.h5")  # تأكد من وجود الملف بنفس المسار
+    model = tf.keras.models.load_model("cnn_mode_headline.h5")  # تأكد من وجود الملف بنفس المسار
     return model
 
 model = load_model()
