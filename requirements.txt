@@ -7,3 +7,4 @@ gensim
 scikit-learn
 numpy>=1.24.3
 scipy
+gensim
